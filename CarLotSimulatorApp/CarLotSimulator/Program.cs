@@ -6,23 +6,44 @@ namespace CarLotSimulator
     {
         static void Main(string[] args)
         {
-            //TODO
+            CarLot lot = new CarLot();
 
-            //Create a seperate class file called Car
-            //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
-            //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
-            //The methods should take one string parameter: the respective noise property
+            Car bmw = new Car();
+            lot.CarList.Add(bmw);
 
+            bmw.Year = 2016;
+            bmw.Make = "BMW";
+            bmw.Model = "328i";
+            bmw.EngineNoise = "Vroom";
+            bmw.HonkNoise = "Beep Boop";
+            bmw.IsDriveable = true;
 
-            //Now that the Car class is created we can instanciate 3 new cars
-            //Set the properties for each of the cars
-            //Call each of the methods for each car
+            bmw.MakeEngineNoise();
+            bmw.MakeHonkNoise();
 
-            //*************BONUS*************//
+            //Object initializer syntax
+            Car celica = new Car() { Year = 2000, Make = "Toyota", Model = "Celica", EngineNoise = "Nothing", HonkNoise = "Help" };
+            lot.CarList.Add(celica);
 
-            // Set the properties utilizing the 3 different ways we learned about, one way for each car
+            celica.MakeEngineNoise();
+            celica.MakeHonkNoise();
+
+            //Constructor initialization
+            Car mustang = new Car(2018, "Ford", "Mustang", "Vroom", "Honk");
+            lot.CarList.Add(mustang);
+
+            mustang.MakeEngineNoise();
+            mustang.MakeHonkNoise();
+
+            Console.WriteLine("------------------");
 
             //*************BONUS X 2*************//
+
+            foreach(var car in lot.CarList)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Year: {car.Year} Make: {car.Make} Model: {car.Model}");
+            }
 
             //Create a CarLot class
             //It should have at least one property: a List of cars
